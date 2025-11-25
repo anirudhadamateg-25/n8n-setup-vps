@@ -191,5 +191,5 @@ sudo systemctl restart caddy
 ```
 
 ### Access Your n8n Instance
-Visit: https://n8n.thapatechnical.in in your browser — your instance is now live! 🎉
+Visit: https://codeproudly.com in your browser — your instance is now live! 🎉
 
