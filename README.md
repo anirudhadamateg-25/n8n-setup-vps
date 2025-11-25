@@ -101,4 +101,95 @@ sudo docker run hello-world
 ```
 docker --version
 ```
+# Set Up Domain
+Buy a domain from any registrar.
+Add A Records in your DNS settings:
+### Example for n8n.codeproudly.com
+```
+A Record (Main) 
+Name: n8n 
+Value: Your VPS IP 
+TTL: 60
+
+---
+
+A Record (www subdomain) 
+Name: www.n8n 
+Value: Your VPS IP 
+TTL: 60  
+Verify DNS: 
+nslookup n8n.codeproudly.com 
+```
+
+### Clone n8n Starter
+# Install git:
+```
+sudo apt install git
+```
+# Clone repo:
+```
+git clone https://github.com/thapatechnical/n8n_starter.git
+```
+```
+cd n8n_starter
+```
+Edit .env file with your domain and settings.
+
+---
+
+## Run n8n with Docker Compose
+```
+docker compose up -d
+```
+This sets up n8n on localhost:5678.
+
+---
+
+# Reverse Proxy with Caddy
+Visit: Caddy Install Docs
+
+### For Ubuntu
+```
+sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https curl
+curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | sudo gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
+curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | sudo tee /etc/apt/sources.list.d/caddy-stable.list
+sudo apt update
+
+sudo apt install caddy
+```
+
+### Start and enable Caddy:
+```
+sudo systemctl enable caddy
+
+sudo systemctl start caddy
+```
+
+### Configure Caddy
+Edit the Caddyfile:
+```
+cd /etc/caddy
+sudo nano Caddyfile
+```
+
+### Paste and modify the following:
+```
+n8n.thapatechnical.in {
+    reverse_proxy localhost:5678
+}
+
+www.n8n.thapatechnical.in {
+    redir https://n8n.thapatechnical.in{uri}
+}
+
+``` 
+Save and exit (Ctrl + O, Enter, Ctrl + X)
+
+### Restart Caddy:
+```
+sudo systemctl restart caddy
+```
+
+### Access Your n8n Instance
+Visit: https://n8n.thapatechnical.in in your browser — your instance is now live! 🎉
 
