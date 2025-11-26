@@ -131,7 +131,13 @@ sudo apt install git
 git clone https://github.com/anirudhadamateg-25/n8n-setup-vps.git
 ```
 ```
-cd n8n_starter
+cd n8n-setup-vps
+```
+```
+ls
+```
+```
+ls -a
 ```
 Edit .env file with your domain and settings.
 
