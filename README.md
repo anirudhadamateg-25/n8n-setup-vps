@@ -180,12 +180,12 @@ sudo nano Caddyfile
 
 ### Paste and modify the following:
 ```
-n8n.thapatechnical.in {
+n8n.codeproudly.com {
     reverse_proxy localhost:5678
 }
 
 www.n8n.thapatechnical.in {
-    redir https://n8n.thapatechnical.in{uri}
+    redir https://n8n.codeproudly.com{uri}
 }
 
 ``` 
