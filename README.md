@@ -184,7 +184,7 @@ n8n.codeproudly.com {
     reverse_proxy localhost:5678
 }
 
-www.n8n.thapatechnical.in {
+www.n8n.codeproudly.com {
     redir https://n8n.codeproudly.com{uri}
 }
 
